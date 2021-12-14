@@ -40,13 +40,17 @@ public:
 	void add(string sID,
 		string fName,
 		string lName,
-		string email,
+		string ema,
 		int age,
-		int numberOfDaysToComplete3Courses,
+		int numberOfDaysToComplete3Courses1,
+		int numberOfDaysToComplete3Courses2,
+		int numberOfDaysToComplete3Courses3,
 		DegreeProgram dp);
 	void printAll();
 	void printByDegreeProgram(DegreeProgram dp);
+	void printInvalidEmails();
 	void printInvalidIDs();
+	void printAverageDaysInCourse(string studentID);
 	void printAge();
 	void removeStudentByID(string studentID);
 	~Repo();

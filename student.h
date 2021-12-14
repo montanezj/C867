@@ -1,9 +1,9 @@
 #pragma once
 #include <iostream>
+#include <string>
 #include <iomanip>
 #include "degree.h"
-using std::string;
-using std::cout;
+using namespace std;
 //using std::endl;
 
 //class Book
