@@ -152,7 +152,7 @@ void Repo::parse(string studentdata)
 
 	lhs = rhs + 1;
 	rhs = studentdata.find(",", lhs);
-	int age = stoi(studentdata.substr(lhs, rhs - lhs));
+	int numAge = stoi(studentdata.substr(lhs, rhs - lhs));
 	lhs = rhs + 1;
 	int days1 = stoi(studentdata.substr(lhs, rhs - lhs));
 	lhs = rhs + 1;
@@ -161,11 +161,29 @@ void Repo::parse(string studentdata)
 	int days3 = stoi(studentdata.substr(lhs, rhs - lhs));
 	lhs = rhs + 1;
 
+	add(sID, fName, lName, ema, numAge, days1, days2, days3, dp);
+}
 
-};
+void Repo::add(string sID, string fName, string lName, string ema, int numAge, int days1, int days2, int days3, DegreeProgram dp)
+{
+	int darr[3]{ days1, days2, days3 }; //constructor - puts days into an array
+	classRosterArray[++lastIndex] = new Student(studentID, firstName,lastName, email, darr, dp);
+}
 
-{ "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
-"A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
-"A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
-"A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
-"A5,Jason,Montanez,jmon306@wgu.edu,24,20,30,30,SOFTWARE" };
+void Repo::printAll()
+{
+
+	Student::printHeader();
+	for (int i = 0; i <= Repo::lastIndex; i++)
+	{
+		cout << classRosterArray[i]->getStudentID(); cout << '\t';
+		cout << classRosterArray[i]->getFirstName(); cout << '\t';
+		cout << classRosterArray[i]->getLastName(); cout << '\t';
+		cout << classRosterArray[i]->getEmail(); cout << '\t';
+		cout << classRosterArray[i]->getAge(); cout << '\t';
+		cout << classRosterArray[i]->getDaysToComplete3Courses()[0]; cout << '\t';
+		cout << classRosterArray[i]->getDaysToComplete3Courses()[1]; cout << '\t';
+		cout << classRosterArray[i]->getDaysToComplete3Courses()[2]; cout << '\t';
+		cout << degreeTypeStrings[classRosterArray[i]->getDegreeProgram()] << std::endl;
+	}
+}
