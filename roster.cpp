@@ -131,10 +131,6 @@
 
 void Repo::parse(string studentdata)
 {
-	DegreeProgram dp = SECURITY; //this section won't work, because it's reading the 0th index which is a1-a5, in the code ex. it has f for fiction and n for non-fiction
-	if (studentdata.at(0) == 'Network') dp = NETWORK;
-	else if (studentdata.at(0) == 'Software') dp = SOFTWARE;
-
 	int rhs = studentdata.find(",");	/*finds comma in example*/
 	string sID = studentdata.substr(0, rhs);
 
@@ -160,6 +156,10 @@ void Repo::parse(string studentdata)
 	lhs = rhs + 1;
 	int days3 = stoi(studentdata.substr(lhs, rhs - lhs));
 	lhs = rhs + 1;
+
+	if (studentdata.at(lhs) == "NETWORK") { DegreeProgram dp = NETWORK; }
+	else if (studentdata.at(lhs) == "SOFTWARE") { DegreeProgram dp = SOFTWARE; }
+	else { DegreeProgram dp == SECURITY; }
 
 	add(sID, fName, lName, ema, numAge, days1, days2, days3, dp);
 }
