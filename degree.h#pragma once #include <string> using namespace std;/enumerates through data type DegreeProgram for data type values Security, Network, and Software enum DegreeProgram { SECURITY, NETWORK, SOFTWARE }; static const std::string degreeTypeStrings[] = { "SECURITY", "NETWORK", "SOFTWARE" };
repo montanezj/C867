@@ -1,0 +1,7 @@
+#pragma once
+#include <string>
+using namespace std;
+
+//enumerates through data type DegreeProgram for data type values Security, Network, and Software
+enum DegreeProgram { SECURITY, NETWORK, SOFTWARE };
+static const std::string degreeTypeStrings[] = { "SECURITY", "NETWORK", "SOFTWARE" };
