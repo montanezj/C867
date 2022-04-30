@@ -1,59 +1,62 @@
+#pragma once
 #include <iostream>
+#include <string>
 #include "roster.h"
-using std::endl;
-
 using namespace std;
-const string studentData[] =
-{ "A1,John,Smith,John1989@gmail.com,20,30,35,40,SECURITY",
-"A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
-"A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
-"A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
-"A5,Jason,Montanez,REDACTED,24,20,30,30,SOFTWARE" };
- 
-
-
-
 
 int main() {
+	//prints out my info, 
+	cout << "C867-Scripting & Programming:Applications" << endl;
+	cout << "Language: C++" << endl;
+	cout << "Student ID: 001389569" << endl;
+	cout << "Name: Jason Montanez" << endl;
+	cout << endl;
 
-}
-//{
-	//const string bookData[] =
-//	{
-		//"blah"
-	//};
+	const int numStudents = 5;
 
+	//student info
+	const string studentData[] =
+	{ "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
+	"A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
+	"A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
+	"A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
+	"A5,Jason,Montanez,jmon306@wgu.edu,24,20,30,30,SOFTWARE" };
 
-//	const int numBooks = 5;/*IT'S TOO BAD ARRAYS DON'T RECORD THEIR OWN SIZE*/
-//	Repo repo;/*THIS CREATES THE REPO USING THE DEFAULT PARAMETERLESS CONSTRUCTOR*/
+	Roster classRoster;
 
-//	for (int i = 0; i < numBooks; i++) repo.parse(bookData[i]);
-//	cout << "Displaying all books: " << std::endl;
-//	repo.printAll();
-//	cout << std::endl;
+	//adds students to roster
+	for (int i = 0; i < numStudents; i++) {
+		classRoster.parse(studentData[i]);
+	}
 
-//	for (int i = 0; i < 3; i++)
-//	{
-	//	cout << "Displaying by book type: " << bookTypeStrings[i] << std::endl;
-	//	repo.printByBookType((BookType)i);/*Cast the integer to a booktype*/
-	//}
-//
-	//cout << "Displaying books with invalid IDs" << std::endl;
-//	repo.printInvalidIDs();
-//	cout << std::endl;
+	classRoster.printAll();
+	cout << endl;
 
-	//cout << "Displaing average prices: " << std::endl;
-//	repo.printAveragePrices();
+	cout << "Invalid Email Addresses" << endl;
+	classRoster.printInvalidEmails();
+	cout << endl;
 
-	//cout << "Removing boiok with ID N_W1:" << std::endl;
-	//repo.removeBookByID("N_W1:");/*THIS METHOD DOES IT'S OWN OUTPUT*/
-	//cout << std::endl;
+	cout << "Average Days In Course" << endl;
+	for (int i = 0; i < numStudents; i++) {
+		classRoster.printAverageDaysInCourse(classRoster.classRosterArray[i]->getStudentID());
+	}
+	cout << endl;
 
-	//cout << "Removing boiok with ID N_W1:" << std::endl;
-	//repo.removeBookByID("N_W1:");
-	//cout << std::endl;
+	cout << "List of Software Students" << endl;
+	classRoster.printByDegreeProgram(DegreeProgram::SOFTWARE);
+	cout << endl;
 
-	//system("pause");
-	//return 0;
-//}
+	classRoster.removeStudentByID("A3");
+	cout << endl;
+
+	classRoster.printAll();
+	cout << endl;
+
+	classRoster.removeStudentByID("A3");
+	cout << endl;
+
+	return 0;
+
+};
+
 
