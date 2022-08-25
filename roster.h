@@ -1,15 +1,18 @@
 #pragma once
-#include <iostream>
-#include <string>
 #include "student.h"
+#include <iostream>
 using namespace std;
 
 class Roster
 {
+
 public:
 	const static int numStudents = 5;
+	int lastIndex = -1;
 	Student* classRosterArray[numStudents]; //array that holds data from STUDENTS
-	void parse(string studentData);
+
+
+	void parseData(string studentData);
 	void add(string studentID,
 		string firstName,
 		string lastName,
@@ -18,16 +21,15 @@ public:
 		int numberOfDaysToComplete3Courses1,
 		int numberOfDaysToComplete3Courses2,
 		int numberOfDaysToComplete3Courses3,
-		DegreeProgram degreeProgram);
+		DegreeProgram degreeprogram);
+
 	void printAll();
-	void printByDegreeProgram(DegreeProgram degreeProgram);
-	void printInvalidEmails();
-	void printAverageDaysInCourse(string studentID);
-	void removeStudentByID(string studentID);
-	~Roster(); //deconstructor
+	void printByDegreeProgram(DegreeProgram degreeprogram);
+	void printAverageDaysInCourse(string studentID); 
+	void remove(string studentID); 
+	void printInvalidEmails(); 
+	~Roster();//deconstructor
 
-private:
-	int lastIndex = -1;
-	int i = 0;
+
+
 };
-
